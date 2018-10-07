@@ -2,7 +2,10 @@
 const router = require('express').Router()
 
 router.get('/', (req, res) => {
-  res.send('Work in progress.')
+  res.json({
+    level: 'Gymnasiesärskolan och särvux gymnasial',
+    routes: [ ]
+  })
 })
 
 module.exports = router

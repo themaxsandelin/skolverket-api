@@ -11,7 +11,10 @@ const latinize = require('../helpers/latinize')
 const rootPath = path.resolve(__dirname + '/../../files/syllabus')
 
 router.get('/', (req, res) => {
-  res.json({})
+  res.json({
+    level: 'Gymnasieskolan och komvux gymnasial',
+    routes: [ '/programmes', '/programmes/[code]', '/subjects', '/subjects/[code]', '/courses', '/courses/[code]']
+  })
 })
 
 router.get('/programmes', (req, res) => {
