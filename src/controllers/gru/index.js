@@ -1,9 +1,9 @@
-// Route manager for /vuxgr.
+// Route manager for /gru.
 const router = require('express').Router()
 
 router.get('/', (req, res) => {
   res.json({
-    level: 'Kommunal vuxenutbildning grundläggande',
+    level: 'Obligatoriska skolan',
     routes: [ ]
   })
 })

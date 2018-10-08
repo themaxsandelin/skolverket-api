@@ -1,4 +1,4 @@
-// Route manager for /sarvuxgr.
+// Route manager for /sarvuxgru.
 const router = require('express').Router()
 
 router.get('/', (req, res) => {
