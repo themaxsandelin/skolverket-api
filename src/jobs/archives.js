@@ -6,10 +6,10 @@ const fs = require('fs')
 const rimraf = require('rimraf')
 const schedule = require('node-schedule')
 
-
 const archives = [ 'compulsory', 'syllabus', 'gys', 'vuxgr', 'sarvuxgr', 'sfi' ]
 const archiveBaseUrl = 'http://opendata.skolverket.se/data/'
 const filesDir = __dirname + '/../../files'
+const args = process.argv.slice(2, process.argv.length)
 
 function downloadArchives() {
   console.log('Archive process started at ' + new Date())
@@ -46,4 +46,6 @@ function downloadArchives() {
 downloadArchives()
 
 // Set up process to run every day at 2am.
-const p = schedule.scheduleJob('0 2 * * *', downloadArchives)
+if (args.indexOf('--no-job') === -1) {
+  const p = schedule.scheduleJob('0 2 * * *', downloadArchives)
+}

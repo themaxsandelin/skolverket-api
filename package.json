@@ -13,7 +13,8 @@
     "open data"
   ],
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "get-archives": "node src/jobs/archives.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -23,6 +24,7 @@
     "node-schedule": "^1.3.0",
     "rimraf": "^2.6.2",
     "tar": "^4.4.6",
+    "turndown": "^5.0.1",
     "xml2js": "^0.4.19"
   }
 }
