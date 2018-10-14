@@ -1,4 +1,6 @@
 // Route manager for /gymsar.
+// Data folder: gys
+
 const router = require('express').Router()
 
 router.get('/', (req, res) => {
