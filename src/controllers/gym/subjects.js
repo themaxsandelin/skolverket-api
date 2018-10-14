@@ -9,7 +9,7 @@ const { parseString } = require('xml2js')
 const Turndown = require('turndown')
 
 // Helpers
-const formatter = require('../../helpers/formatter')
+const formatter = require('../../helpers/gym/formatter')
 const latinize = require('../../helpers/latinize')
 
 const rootPath = path.resolve(__dirname + '/../../../files/syllabus')

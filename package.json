@@ -1,7 +1,11 @@
 {
   "name": "skolverket-api",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "This is open API alternative for Skolverket's open data.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/themaxsandelin/skolverket-api"
+  },
   "author": {
     "name": "Max Sandelin",
     "email": "max@maxsandelin.com",
