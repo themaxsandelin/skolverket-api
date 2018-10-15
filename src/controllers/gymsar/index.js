@@ -1,12 +1,16 @@
-// Route manager for /gymsar.
+// Route manager for /gymsar
 // Data folder: gys
 
+// Dependencies
 const router = require('express').Router()
+
+// Sub routes
+router.use('/programmes', require('./programmes'))
 
 router.get('/', (req, res) => {
   res.json({
     level: 'Gymnasiesärskolan och särvux gymnasial',
-    routes: [ ]
+    routes: ['/programmes', '/programmes/[code]']
   })
 })
 
