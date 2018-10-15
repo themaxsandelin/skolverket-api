@@ -1,18 +1,17 @@
-// Route manager for: /gym/subjects
-// Data folder: syllabus
+// Route manager for /gymsar/subjects
+// Data folder: gys
 
 // Dependencies
 const router = require('express').Router()
 const path = require('path')
 const fs = require('fs')
 const { parseString } = require('xml2js')
-const Turndown = require('turndown')
 
 // Helpers
-const formatter = require('../../helpers/gym/formatter')
+const formatter = require('../../helpers/gymsar/formatter')
 const latinize = require('../../helpers/latinize')
 
-const rootPath = path.resolve(__dirname + '/../../../files/syllabus')
+const rootPath = path.resolve(__dirname + '/../../../files/gys')
 
 router.get('/', (req, res) => {
   const file = rootPath + '/subjectsAndCourses/amnen_och_kurser.xml'
@@ -28,6 +27,7 @@ router.get('/:code', (req, res) => {
 
   parseString(fs.readFileSync(file).toString(), (err, result) => {
     let validCode = false
+
     result.SubjectsAndCourses.subject.forEach(subject => {
       if (subject.code[0].toLowerCase() === code) {
         validCode = true

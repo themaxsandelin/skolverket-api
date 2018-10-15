@@ -1,4 +1,5 @@
 // Route manager for /gymsar/programmes
+// Data folder: gys
 
 // Dependencies
 const router = require('express').Router()
@@ -33,22 +34,24 @@ router.get('/:code', (req, res) => {
   const code = req.params.code.toLowerCase()
 
   parseString(fs.readFileSync(programmeFile).toString(), (err, result) => {
-    let programme
+    let validCode = false
+
     result.ProgramsAndOrientations.program.forEach(data => {
       if (data.code[0].toLowerCase() === code) {
-        const fileName = latinize(data.name[0]) + '.xml'
-        const filePath = rootPath + '/program/' + fileName
-        parseString(fs.readFileSync(filePath).toString(), (err, result) => {
-          programme = formatter.formatProgramme(result.program)
+        validCode = true
+
+        let file = rootPath + '/program/' + latinize(data.name[0]) + '.xml'
+        while (file.indexOf('–') > -1) {
+          file = file.replace('–', '-')
+        }
+
+        parseString(fs.readFileSync(file).toString(), (err, result) => {
+          res.json(formatter.formatProgramme(result.program))
         })
       }
     })
 
-    if (programme) {
-      res.json(programme)
-    } else {
-      res.status(404).send('Not found')
-    }
+    if (!validCode) res.status(404).send('Not found')
   })
 })
 

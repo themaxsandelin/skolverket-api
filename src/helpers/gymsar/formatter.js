@@ -170,6 +170,20 @@ function Formatter() {
     return subjects
   }
 
+  function formatSubjectData(data) {
+    return {
+      name: data.name[0],
+      code: data.code[0],
+      skolfs: data.skolfsId[0],
+      applianceDate: data.applianceDate[0],
+      typeOfSchooling: data.typeOfSchooling[0],
+      category: data.category[0],
+      description: turndownService.turndown(data.description[0]),
+      purpose: turndownService.turndown(data.purpose[0]),
+      courses: formatCourses(data.courses)
+    }
+  }
+
   function formatCourses(courseList) {
     const courses = []
     courseList.forEach(courseData => {
@@ -204,7 +218,9 @@ function Formatter() {
   }
 
   return {
-    formatProgramme
+    formatProgramme,
+    formatSubjects,
+    formatSubjectData
   }
 }
 
