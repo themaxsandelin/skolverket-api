@@ -208,10 +208,12 @@ function Formatter() {
   function formatKnowledgeRequirements(requirementsList) {
     const requirements = []
     requirementsList.forEach(reqData => {
-      requirements.push({
-        grade: reqData.gradeStep[0],
-        description: turndownService.turndown(reqData.text[0])
-      })
+      const req = { description: turndownService.turndown(reqData.text[0]) }
+
+      if (reqData.gradeStep) req.grade = reqData.gradeStep[0]
+      if (reqData.year && typeof reqData.year[0] === 'string') req.year = reqData.year[0]
+
+      requirements.push(req)
     })
 
     return requirements

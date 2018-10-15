@@ -171,7 +171,7 @@ function Formatter() {
   }
 
   function formatSubjectData(data) {
-    return {
+    const subject = {
       name: data.name[0],
       code: data.code[0],
       skolfs: data.skolfsId[0],
@@ -179,9 +179,13 @@ function Formatter() {
       typeOfSchooling: data.typeOfSchooling[0],
       category: data.category[0],
       description: turndownService.turndown(data.description[0]),
-      purpose: turndownService.turndown(data.purpose[0]),
-      courses: formatCourses(data.courses)
+      purpose: turndownService.turndown(data.purpose[0])
     }
+    if (data.courses) subject.courses = formatCourses(data.courses)
+    if (data.centralContents) subject.centralContent = formatCentralContent(data.centralContents)
+    if (data.knowledgeRequirements) subject.knowledgeRequirements = formatKnowledgeRequirements(data.knowledgeRequirements)
+
+    return subject
   }
 
   function formatCourses(courseList) {
@@ -205,13 +209,29 @@ function Formatter() {
     return course
   }
 
+  function formatCentralContent(blocks) {
+    const content = []
+    blocks.forEach(block => {
+      const row = {
+        text: turndownService.turndown(block.text[0])
+      }
+      if (block.year && typeof block.year[0] === 'string') row.year = block.year[0]
+
+      content.push(row)
+    })
+
+    return content.length > 1 ? content : content[0]
+  }
+
   function formatKnowledgeRequirements(requirementsList) {
     const requirements = []
     requirementsList.forEach(reqData => {
-      requirements.push({
-        grade: reqData.gradeStep[0],
-        description: turndownService.turndown(reqData.text[0])
-      })
+      const req = { description: turndownService.turndown(reqData.text[0]) }
+
+      if (reqData.gradeStep) req.grade = reqData.gradeStep[0]
+      if (reqData.year && typeof reqData.year[0] === 'string') req.year = reqData.year[0]
+
+      requirements.push(req)
     })
 
     return requirements
@@ -220,7 +240,8 @@ function Formatter() {
   return {
     formatProgramme,
     formatSubjects,
-    formatSubjectData
+    formatSubjectData,
+    formatCourseData
   }
 }
 

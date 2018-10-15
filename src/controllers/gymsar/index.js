@@ -8,11 +8,12 @@ const router = require('express').Router()
 router.use('/programmes', require('./programmes'))
 router.use('/subjects', require('./subjects'))
 router.use('/courses', require('./courses'))
+router.use('/subject-areas', require('./subjectAreas'))
 
 router.get('/', (req, res) => {
   res.json({
     level: 'Gymnasiesärskolan och särvux gymnasial',
-    routes: ['/programmes', '/programmes/[code]', '/subjects', '/subjects/[code]', '/courses', '/courses/[code]']
+    routes: ['/programmes', '/programmes/[code]', '/subjects', '/subjects/[code]', '/courses', '/courses/[code]', '/subject-areas', '/subject-areas/[code]']
   })
 })
 
