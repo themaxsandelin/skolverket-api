@@ -1,5 +1,5 @@
-// Route manager for: /gym/courses
-// Data folder: syllabus
+// Route manager for: /gymsar/courses
+// Data folder: gys
 
 // Dependencies
 const router = require('express').Router()
@@ -11,7 +11,7 @@ const { parseString } = require('xml2js')
 const formatter = require('../../helpers/gym/formatter')
 const latinize = require('../../helpers/latinize')
 
-const rootPath = path.resolve(__dirname + '/../../../files/syllabus')
+const rootPath = path.resolve(__dirname + '/../../../files/gys')
 
 router.get('/', (req, res) => {
   const file = rootPath + '/subjectsAndCourses/amnen_och_kurser.xml'
