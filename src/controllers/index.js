@@ -18,11 +18,11 @@ router.get('/', (req, res) => {
 
       '<b>Available routes:</b><br><br>' +
 
-      'Gymnasieskolan och komvux gymnasial<br>' +
-      '<a href="/gym">/gym</a><br><br>' +
-
       'Obligatoriska skolan<br>' +
       '<a href="/gru">/gru</a><br><br>' +
+
+      'Gymnasieskolan och komvux gymnasial<br>' +
+      '<a href="/gym">/gym</a><br><br>' +
 
       'Gymnasiesärskolan och särvux gymnasial<br>' +
       '<a href="/gymsar">/gymsar</a><br><br><br>' +
