@@ -28,15 +28,15 @@ router.get('/', (req, res) => {
       '<a href="/gymsar">/gymsar</a><br><br>' +
 
       'Kommunal vuxenutbildning grundläggande<br>' +
-      '<a href="/vuxgru">/vuxgru</a><br><br><br>' +
+      '<a href="/vuxgru">/vuxgru</a><br><br>' +
+
+      'Komvux sfi<br>' +
+      '<a href="/sfi">/sfi</a><br><br><br>' +
 
       '<b>Work-in-progress routes:</b><br><br>' +
 
       'Särvux grundläggande (WIP)<br>' +
       '<a href="/sarvuxgru">/sarvuxgru</a><br><br>' +
-
-      'Komvux sfi (WIP)<br>' +
-      '<a href="/sfi">/sfi</a><br><br><br>' +
 
       '<b>Built and facilitated by <a href="https://github.com/themaxsandelin" target="_blank">Max Sandelin</a></b><br><br>' +
       'This API is completely open source, and you can find the <a href="https://github.com/themaxsandelin/skolverket-api" target="_blank">repository here.</a>' +
